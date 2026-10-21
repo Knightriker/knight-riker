@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<% const g = site.gallery; %>
+<section class="page-head"><h1><%= g.heading %></h1></section>
+<section class="gallery">
+  <% g.images.forEach(function (img) { %>
+    <a href="<%= img.src %>" target="_blank" rel="noopener"><img src="<%= img.src %>" alt="<%= img.alt %>" loading="lazy"></a>
+  <% }) %>
+</section>
+<section class="closing">
+  <h2><%= g.cta %></h2>
+  <a class="btn" href="/contact">Contact Us</a>
+</section>
+<%- include('partials/footer') %>

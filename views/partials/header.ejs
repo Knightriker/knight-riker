@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <title><%= title %></title>
+  <meta name="description" content="<%= site.tagline %>. Schematics, PCB files, 3D-printable case and Raspberry Pi Pico 2 code.">
+  <meta property="og:title" content="<%= title %>">
+  <meta property="og:description" content="<%= site.tagline %>.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="<%= siteUrl %>/img/hero-voicebox.png">
+  <link rel="canonical" href="<%= siteUrl %><%= path %>">
+  <link rel="icon" href="<%= site.logo %>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="/">
+      <img src="<%= site.logo %>" alt="" width="36" height="36">
+      <span><%= site.name %></span>
+    </a>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <% site.nav.forEach(function (item) { %>
+          <li><a href="<%= item.href %>" <%- path === item.href ? 'aria-current="page"' : '' %>><%= item.label %></a></li>
+        <% }) %>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
+</header>
+<main id="content">

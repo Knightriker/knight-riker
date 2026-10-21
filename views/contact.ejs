@@ -1,0 +1,25 @@
+<%- include('partials/header') %>
+<section class="page-head"><h1><%= site.contact.heading %></h1></section>
+<section class="contact">
+  <% if (status) { %>
+    <p class="notice <%= status.ok ? 'ok' : 'err' %>" role="status"><%= status.text %></p>
+  <% } %>
+  <form method="post" action="/contact" novalidate>
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" autocomplete="name" maxlength="100" required value="<%= form.name || '' %>">
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="email" maxlength="200" required value="<%= form.email || '' %>">
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="7" maxlength="5000" required><%= form.message || '' %></textarea>
+
+    <div class="hp" aria-hidden="true">
+      <label for="website">Leave this empty</label>
+      <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+
+    <button class="btn" type="submit">Send</button>
+  </form>
+</section>
+<%- include('partials/footer') %>

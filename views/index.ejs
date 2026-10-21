@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+<% const h = site.home; %>
+<section class="hero">
+  <div class="scanner" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <h1><%= h.heading %></h1>
+      <p class="lede"><%= h.intro %></p>
+      <a class="btn" href="/contact">Contact Us</a>
+    </div>
+    <picture>
+      <source srcset="<%= h.heroImageWebp %>" type="image/webp">
+      <img class="hero-img" src="<%= h.heroImage %>" alt="3D render of the KITT voicebox case" width="814" height="912" fetchpriority="high">
+    </picture>
+  </div>
+</section>
+
+<section class="features">
+  <% h.features.forEach(function (f) { %>
+    <article class="feature">
+      <h2><%= f.title %></h2>
+      <p><%= f.text %></p>
+      <% if (f.images) { %>
+        <div class="feature-images">
+          <% f.images.forEach(function (src) { %><img src="<%= src %>" alt="<%= f.title %> photo" loading="lazy"><% }) %>
+        </div>
+      <% } %>
+    </article>
+  <% }) %>
+</section>
+
+<section class="closing">
+  <a class="btn" href="/contact">Contact Us</a>
+  <img src="<%= h.closingImage %>" alt="KITT voice module board" loading="lazy">
+</section>
+<%- include('partials/footer') %>

@@ -1,0 +1,112 @@
+/* Flat, plain layout modelled on the original knightriker.com.
+   Change --font to switch the typeface everywhere (and update the Google Fonts link in views/partials/header.ejs). */
+:root {
+  --bg: #000000;
+  --text: #ffffff;
+  --muted: #b5b0ad;
+  --line: #2b2b2b;
+  --red: #ff2a1f;
+  --font: 'Roboto', Arial, Helvetica, sans-serif;
+  --max: 1140px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font-family: var(--font); font-size: 1rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--red); }
+a:hover { color: #fff; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+h1, h2 { font-family: var(--font); line-height: 1.15; margin: 0 0 .6em; font-weight: 700; }
+h1 { font-size: clamp(2rem, 4.6vw, 3.2rem); }
+h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); }
+p { margin: 0 0 1.2em; max-width: 60ch; }
+.lede { font-size: 1.15rem; color: var(--muted); }
+
+.skip { position: absolute; left: -999px; top: 0; background: var(--red); color: #000; padding: .6rem 1rem; z-index: 100; }
+.skip:focus { left: 0; }
+
+/* Header */
+.site-header { border-bottom: 1px solid var(--line); }
+.bar { display: flex; align-items: center; gap: 1.5rem; max-width: var(--max); margin: 0 auto; padding: 1rem 1.25rem; }
+.brand { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: var(--text); font-weight: 700; font-size: 1.15rem; margin-right: auto; }
+.brand img { width: 40px; height: 40px; object-fit: contain; }
+.site-header nav ul { display: flex; gap: 1.75rem; list-style: none; margin: 0; padding: 0; }
+.site-header nav a { color: var(--text); text-decoration: none; padding: .25rem 0; border-bottom: 2px solid transparent; }
+.site-header nav a:hover { border-bottom-color: #555; }
+.site-header nav a[aria-current="page"] { border-bottom-color: var(--red); }
+.nav-toggle { display: none; background: none; border: 1px solid var(--line); color: var(--text); font: inherit; padding: .4rem .9rem; border-radius: 3px; cursor: pointer; }
+
+.btn {
+  display: inline-block; background: var(--red); color: #000; border: 0; cursor: pointer;
+  font-family: var(--font); font-weight: 500; font-size: 1rem; text-decoration: none;
+  padding: .8rem 1.6rem; border-radius: 3px; transition: background .15s;
+}
+.btn:hover { background: #fff; color: #000; }
+
+/* Scanner: 8 lamps driven by main.js */
+.scanner { max-width: var(--max); margin: 0 auto; padding: 2rem 1.25rem 0; display: flex; gap: .45rem; }
+.scanner i { position: relative; flex: 1; height: 18px; border-radius: 3px; background: #1a0707; }
+.scanner i::after {
+  content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; border-radius: 3px;
+  background: #ff3a2c;
+  box-shadow: 0 0 22px 4px rgba(255, 42, 31, .75), inset 0 0 8px rgba(255, 190, 170, .8);
+  opacity: var(--b, .08);
+}
+
+/* Home */
+.hero-grid { max-width: var(--max); margin: 0 auto; padding: 3rem 1.25rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.hero-img { width: min(100%, 460px); margin: 0 auto; }
+
+.features { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0 4rem; }
+.feature { border-top: 1px solid var(--line); padding: 2rem 0; }
+.feature p { color: var(--muted); margin-bottom: 0; }
+.feature-images { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin-top: 1.25rem; }
+.feature-images img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
+
+.closing { max-width: var(--max); margin: 0 auto; padding: 1rem 1.25rem 5rem; text-align: center; }
+.closing img { margin: 2rem auto 0; max-height: 480px; width: auto; }
+.closing h2 { margin-bottom: 1rem; }
+
+/* Inner pages */
+.page-head { max-width: var(--max); margin: 0 auto; padding: 2.5rem 1.25rem 1.5rem; }
+.parts { max-width: var(--max); margin: 0 auto; padding: 1rem 1.25rem 5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; align-items: start; }
+.parts-col h2 { border-bottom: 2px solid var(--red); padding-bottom: .4rem; }
+.checklist { list-style: none; margin: 0; padding: 0; }
+.checklist li { padding: .55rem 0 .55rem 1.5rem; border-bottom: 1px solid var(--line); position: relative; }
+.checklist li::before { content: ''; position: absolute; left: 0; top: 1.05rem; width: .6rem; height: .6rem; border: 1.5px solid var(--red); }
+
+.gallery { max-width: var(--max); margin: 0 auto; padding: 1rem 1.25rem 3rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+
+.contact { max-width: 640px; margin: 0 auto; padding: 0 1.25rem 5rem; }
+.contact form { display: grid; gap: .4rem; }
+.contact label { font-weight: 500; margin-top: .8rem; }
+.contact input, .contact textarea { width: 100%; background: #111; color: var(--text); border: 1px solid var(--line); border-radius: 3px; padding: .8rem .9rem; font: inherit; }
+.contact input:focus, .contact textarea:focus { border-color: var(--red); outline: none; }
+.contact .btn { justify-self: start; margin-top: 1.2rem; }
+.hp { position: absolute; left: -9999px; }
+.notice { padding: .9rem 1rem; border-left: 3px solid; margin-bottom: 1.5rem; background: #111; max-width: none; }
+.notice.ok { border-color: #36c26b; }
+.notice.err { border-color: var(--red); }
+
+/* Footer */
+.site-footer { border-top: 1px solid var(--line); padding: 2rem 1.25rem; text-align: center; color: var(--muted); font-size: .95rem; }
+.site-footer ul { list-style: none; margin: 0 0 1rem; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
+.site-footer a { color: var(--text); text-decoration: none; }
+.site-footer a:hover { color: var(--red); }
+.site-footer p { margin: 0 auto; }
+
+@media (max-width: 860px) {
+  .hero-grid, .features, .gallery, .parts { grid-template-columns: 1fr; }
+  .nav-toggle { display: block; }
+  .bar { flex-wrap: wrap; }
+  .site-header nav { order: 5; width: 100%; display: none; }
+  .site-header nav.open { display: block; }
+  .site-header nav ul { flex-direction: column; gap: .25rem; padding: .5rem 0; }
+}
+@media (prefers-reduced-motion: reduce) { .btn { transition: none; } }

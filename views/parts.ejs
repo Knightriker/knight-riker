@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+<% const p = site.parts; %>
+<section class="page-head">
+  <h1><%= p.heading %></h1>
+  <p class="lede"><%= p.intro %></p>
+</section>
+<section class="parts">
+  <div class="parts-col">
+    <h2>Equipment</h2>
+    <ul class="checklist">
+      <% p.equipment.forEach(function (i) { %><li><%= i %></li><% }) %>
+    </ul>
+  </div>
+  <% p.boards.forEach(function (b) { %>
+    <div class="parts-col">
+      <h2><%= b.name %></h2>
+      <ul class="checklist">
+        <% b.items.forEach(function (i) { %><li><%= i %></li><% }) %>
+      </ul>
+    </div>
+  <% }) %>
+</section>
+<%- include('partials/footer') %>
